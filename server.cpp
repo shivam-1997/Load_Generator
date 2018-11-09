@@ -10,7 +10,7 @@
 #include <pthread.h>
 using namespace std;
 
-#define NUM_OF_WORKERS 200
+#define NUM_OF_WORKERS 500
 #define MAXSZ 256
 
 // shared variables
