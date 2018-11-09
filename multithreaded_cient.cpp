@@ -101,7 +101,7 @@ double executeCommand(std::string command, int &sockfd, struct sockaddr_in &serv
             int n = read(sockfd, thread_n,10);
             cout<<"OK-connected to thread "<<thread_n<<endl;
 
-            return ((end.tv_sec - begin.tv_sec) * 1000000 + (end.tv_usec - begin.tv_usec)) / 1000000;
+            return double((end.tv_sec - begin.tv_sec) * 1000000.00 + (end.tv_usec - begin.tv_usec)) / 1000000.00;
         }
         else perror("Unable to connect to server");
       }
@@ -112,7 +112,7 @@ double executeCommand(std::string command, int &sockfd, struct sockaddr_in &serv
           disconnect_fun( sockfd);
           // t = clock() - t;
           gettimeofday(&end, NULL);
-          return ((end.tv_sec - begin.tv_sec) * 1000000 + (end.tv_usec - begin.tv_usec)) / 1000000;
+          return double((end.tv_sec - begin.tv_sec) * 1000000.00 + (end.tv_usec - begin.tv_usec)) / 1000000.00;
       }
       else if((operation.compare("create")==0) || (operation.compare("delete")==0)
             ||(operation.compare("update")==0) || (operation.compare("read")==0)){
@@ -139,7 +139,7 @@ double executeCommand(std::string command, int &sockfd, struct sockaddr_in &serv
         int n_transfer = read(sockfd, msg, MAXSZ);
         // t = clock() - t;
         gettimeofday(&end, NULL);
-        return ((end.tv_sec - begin.tv_sec) * 1000000 + (end.tv_usec - begin.tv_usec)) / 1000000;
+        return double ((end.tv_sec - begin.tv_sec) * 1000000.00 + (end.tv_usec - begin.tv_usec)) / 1000000.00;
         // cout<<n_transfer<<" Bytes received"<<endl;
         msg[n_transfer] = 0;
         cout<<msg<<endl;
